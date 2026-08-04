@@ -47,17 +47,11 @@
     margin:0;
     text-shadow:0 0 6px var(--green), 0 0 18px rgba(60,248,0,0.5);
   }
-  .tagline{
-    font-family:'Brush Script MT','Lucida Calligraphy',cursive;
-    font-size:1.4rem;
-    opacity:0.9;
-    margin:8px 0 4px;
-  }
-  .subtag{
-    letter-spacing:0.2em;
-    font-size:0.8rem;
-    opacity:0.6;
-    text-transform:uppercase;
+  .banner{
+    display:block;
+    width:min(420px,80%);
+    margin:0 auto;
+    filter:drop-shadow(0 0 24px rgba(60,248,0,0.25));
   }
   h2{
     letter-spacing:0.15em;
@@ -168,9 +162,7 @@
 <div class="wrap">
 
   <header>
-    <p class="wordmark">V.O.C.K.</p>
-    <p class="tagline">Vocal Output Creation Kit</p>
-    <p class="subtag">Fallout 2 Voice Modding Pipeline</p>
+    <img class="banner" src="assets/banner.svg" alt="V.O.C.K. — Vocal Output Creation Kit. Pip-Boy 2000 device photo with the VOCK wordmark composited into the CRT screen in glowing green phosphor text, crediting the project's voice actors.">
   </header>
 
   <section>
