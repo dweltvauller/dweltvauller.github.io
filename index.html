@@ -93,6 +93,24 @@
   .l-actor{ font-size:14px; opacity:0.95; }
   .l-special{ top:1145px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
+
+  /* Date/time readout, positioned using the original Pip-Boy engine's
+     digit-slot coordinates so it lines up with the device's LCD strip. */
+  .clock{ position:absolute; left:0; top:0; width:640px; height:480px; }
+  .cd{ position:absolute; width:9px; height:17px; image-rendering:pixelated; }
+  .cd-day1{ left:20px; top:17px; }
+  .cd-day2{ left:29px; top:17px; }
+  .cd-month{ left:46px; top:18px; width:29px; height:14px; }
+  .cd-year1{ left:83px; top:17px; }
+  .cd-year2{ left:92px; top:17px; }
+  .cd-year3{ left:101px; top:17px; }
+  .cd-year4{ left:110px; top:17px; }
+  .cd-time1{ left:129px; top:17px; }
+  .cd-time2{ left:138px; top:17px; }
+  .cd-time3{ left:151px; top:17px; }
+  .cd-time4{ left:160px; top:17px; }
+  .cd-sec1{ left:173px; top:17px; }
+  .cd-sec2{ left:182px; top:17px; }
 </style>
 </head>
 <body>
@@ -100,6 +118,22 @@
 <div class="stage-wrap">
   <div class="stage">
     <img class="bg" src="assets/pipboy.png" alt="V.O.C.K. — Vocal Output Creation Kit. Pip-Boy 2000 device photo with the VOCK wordmark composited into the CRT screen in glowing green phosphor text, crediting the project's voice actors.">
+
+    <div class="clock">
+      <img class="cd cd-day1" alt="">
+      <img class="cd cd-day2" alt="">
+      <img class="cd cd-month" alt="">
+      <img class="cd cd-year1" alt="">
+      <img class="cd cd-year2" alt="">
+      <img class="cd cd-year3" alt="">
+      <img class="cd cd-year4" alt="">
+      <img class="cd cd-time1" alt="">
+      <img class="cd cd-time2" alt="">
+      <img class="cd cd-time3" alt="">
+      <img class="cd cd-time4" alt="">
+      <img class="cd cd-sec1" alt="">
+      <img class="cd cd-sec2" alt="">
+    </div>
 
     <div class="screen">
       <div class="crawl-track">
@@ -241,6 +275,69 @@
 
   </div>
 </div>
+
+<script>
+(function(){
+  var MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  var GLYPHS = 'assets/glyphs/';
+  var SPIN_FRAMES = ['x_white.png', 'y_white.png'];
+  var SPIN_STEP_MS = 70;
+
+  // Mechanical odometer roll: flash the sprite sheet's blur-transition
+  // frames before landing on the new value, instead of swapping instantly.
+  var MONTH_SPIN_FRAMES = ['month_roll_x.png', 'month_roll_y.png'];
+
+  function roll(el, frames, finalSrc){
+    var i = 0;
+    (function step(){
+      if (i < frames.length){
+        el.src = GLYPHS + frames[i];
+        i++;
+        setTimeout(step, SPIN_STEP_MS);
+      } else {
+        el.src = finalSrc;
+      }
+    })();
+  }
+
+  function setDigit(el, digit){
+    if (el.dataset.val === digit) return;
+    el.dataset.val = digit;
+    roll(el, SPIN_FRAMES, GLYPHS + 'digit_' + digit + '_white.png');
+  }
+
+  function setMonth(el, abbr){
+    if (el.dataset.val === abbr) return;
+    el.dataset.val = abbr;
+    roll(el, MONTH_SPIN_FRAMES, GLYPHS + 'month_' + abbr + '.png');
+  }
+
+  function update(){
+    var now = new Date();
+    var day = String(now.getDate()).padStart(2, '0');
+    var year = String(now.getFullYear()).padStart(4, '0');
+    var time = String(now.getHours()).padStart(2, '0') + String(now.getMinutes()).padStart(2, '0');
+    var seconds = String(now.getSeconds()).padStart(2, '0');
+
+    setDigit(document.querySelector('.cd-day1'), day[0]);
+    setDigit(document.querySelector('.cd-day2'), day[1]);
+    setMonth(document.querySelector('.cd-month'), MONTHS[now.getMonth()]);
+    setDigit(document.querySelector('.cd-year1'), year[0]);
+    setDigit(document.querySelector('.cd-year2'), year[1]);
+    setDigit(document.querySelector('.cd-year3'), year[2]);
+    setDigit(document.querySelector('.cd-year4'), year[3]);
+    setDigit(document.querySelector('.cd-time1'), time[0]);
+    setDigit(document.querySelector('.cd-time2'), time[1]);
+    setDigit(document.querySelector('.cd-time3'), time[2]);
+    setDigit(document.querySelector('.cd-time4'), time[3]);
+    setDigit(document.querySelector('.cd-sec1'), seconds[0]);
+    setDigit(document.querySelector('.cd-sec2'), seconds[1]);
+  }
+
+  update();
+  setInterval(update, 1000);
+})();
+</script>
 
 </body>
 </html>
