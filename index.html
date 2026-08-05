@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V.O.C.K. — Vocal Output Creation Kit</title>
+<title>V.O.C.K. - Vocal Output Creation Kit</title>
 <meta name="description" content="V.O.C.K. is a full voice-acting mod pipeline for Fallout 2 — a Python tool that turns dialogue files and raw audio into installable in-game voice mods.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%22 y=%2250%22 font-size=%2280%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>☢️</text></svg>">
 <style>
   :root{ --green:#3cf800; }
   html,body{margin:0;padding:0;height:100%;background:#050805;}
@@ -17,18 +18,21 @@
 
   /* Responsive 640x480 virtual stage: everything inside is positioned using
      the Pip-Boy photo's native pixel coordinates, then the whole stage is
-     scaled to fit the viewport via container query units. */
+     scaled to fit the viewport (scale computed in JS from the wrap's
+     measured width, avoiding container-query units). */
   .stage-wrap{
     width:min(900px,92vw);
     aspect-ratio:640/480;
-    container-type:inline-size;
+    position:relative;
+    overflow:hidden;
   }
   .stage{
-    position:relative;
+    position:absolute;
+    left:0;
+    top:0;
     width:640px;
     height:480px;
     transform-origin:top left;
-    transform:scale(calc(100cqw / 640));
   }
   .stage img.bg{
     position:absolute;
@@ -278,6 +282,15 @@
 
 <script>
 (function(){
+  var stageWrap = document.querySelector('.stage-wrap');
+  var stage = document.querySelector('.stage');
+
+  function resizeStage(){
+    stage.style.transform = 'scale(' + (stageWrap.clientWidth / 640) + ')';
+  }
+  resizeStage();
+  window.addEventListener('resize', resizeStage);
+
   var MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
   var GLYPHS = 'assets/glyphs/';
   var SPIN_FRAMES = ['x_white.png', 'y_white.png'];
