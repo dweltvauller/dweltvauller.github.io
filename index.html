@@ -6,19 +6,241 @@
 <title>V.O.C.K. — Vocal Output Creation Kit</title>
 <meta name="description" content="V.O.C.K. is a full voice-acting mod pipeline for Fallout 2 — a Python tool that turns dialogue files and raw audio into installable in-game voice mods.">
 <style>
+  :root{ --green:#3cf800; }
   html,body{margin:0;padding:0;height:100%;background:#050805;}
   body{
     display:flex;
     align-items:center;
     justify-content:center;
+    font-family:'Courier New', Consolas, monospace;
   }
-  img{
-    max-width:90vw;
-    max-height:90vh;
+
+  /* Responsive 640x480 virtual stage: everything inside is positioned using
+     the Pip-Boy photo's native pixel coordinates, then the whole stage is
+     scaled to fit the viewport via container query units. */
+  .stage-wrap{
+    width:min(900px,92vw);
+    aspect-ratio:640/480;
+    container-type:inline-size;
   }
+  .stage{
+    position:relative;
+    width:640px;
+    height:480px;
+    transform-origin:top left;
+    transform:scale(calc(100cqw / 640));
+  }
+  .stage img.bg{
+    position:absolute;
+    inset:0;
+    width:640px;
+    height:480px;
+    display:block;
+  }
+
+  /* CRT screen: clipped to the photo's screen shape, holds the scrolling crawl */
+  .screen{
+    position:absolute;
+    left:0;
+    top:0;
+    width:640px;
+    height:480px;
+    overflow:hidden;
+    clip-path:path('M608,30 L256,30 L243,39 L245,173 L249,343 L249,449 L252,457 L257,462 L264,466 L274,467 L294,468 L338,470 L434,469 L489,469 L531,468 L552,468 L573,465 L594,462 L610,455 L613,449 L619,282 L624,155 L630,63 L630,51 L626,42 L620,35 L612,31 Z');
+  }
+  .screen::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0.55) 0px, rgba(0,0,0,0.55) 1px,
+      transparent 1px, transparent 4px);
+    opacity:0.14;
+    pointer-events:none;
+  }
+
+  .crawl-track{
+    position:absolute;
+    left:240px;
+    top:0;
+    width:395px;
+    text-align:center;
+    color:var(--green);
+    animation:crawl 49s linear infinite;
+  }
+  .crawl-block{ position:relative; }
+  .crawl-block + .crawl-block{ position:absolute; top:1742px; left:0; width:100%; }
+  .crawl-track div{
+    position:absolute;
+    left:0;
+    width:100%;
+  }
+  @keyframes crawl{
+    from{ transform:translateY(470px); }
+    to{ transform:translateY(-1272px); }
+  }
+
+  .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
+
+  .l-title{ top:-35px; font-size:44px; font-weight:700; letter-spacing:3px; }
+  .l-script{ top:26px; font-size:24px; font-family:'Brush Script MT','Lucida Calligraphy',cursive; opacity:0.9; }
+  .l-tagline{ top:60px; font-size:10px; letter-spacing:2px; opacity:0.5; }
+  .l-credits{ top:117px; font-size:16px; font-weight:700; letter-spacing:4px; }
+  .l-createdby{ top:153px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-name{ top:172px; font-size:18px; }
+  .l-voiceactors{ top:219px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
+  .l-actor{ font-size:14px; opacity:0.95; }
+  .l-special{ top:1145px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-thanks{ font-size:14px; opacity:0.95; }
 </style>
 </head>
 <body>
-<img src="assets/banner.svg" alt="V.O.C.K. — Vocal Output Creation Kit. Pip-Boy 2000 device photo with the VOCK wordmark composited into the CRT screen in glowing green phosphor text, crediting the project's voice actors.">
+
+<div class="stage-wrap">
+  <div class="stage">
+    <img class="bg" src="assets/pipboy.png" alt="V.O.C.K. — Vocal Output Creation Kit. Pip-Boy 2000 device photo with the VOCK wordmark composited into the CRT screen in glowing green phosphor text, crediting the project's voice actors.">
+
+    <div class="screen">
+      <div class="crawl-track">
+        <div class="crawl-block">
+          <div class="l-title glow">V.O.C.K.</div>
+          <div class="l-script glow">Vocal Output Creation Kit</div>
+          <div class="l-tagline">Fallout 2 Voice Modding Pipeline</div>
+
+          <div class="l-credits glow">CREDITS</div>
+
+          <div class="l-createdby">CREATED &amp; MANAGED BY</div>
+          <div class="l-name glow">Fede the Dwelt Vauller</div>
+
+          <div class="l-voiceactors">VOICE ACTORS</div>
+
+          <div class="l-role" style="top:254px;">SKEETER · VEGEIR</div>
+          <div class="l-actor" style="top:269px;">Joshua Luther</div>
+
+          <div class="l-role" style="top:306px;">KEITH WRIGHT</div>
+          <div class="l-actor" style="top:321px;">dar_duck</div>
+
+          <div class="l-role" style="top:358px;">ERIC</div>
+          <div class="l-actor" style="top:373px;">KalleKannibal</div>
+
+          <div class="l-role" style="top:410px;">KAGA · CHUCK DUNTON</div>
+          <div class="l-actor" style="top:425px;">Richard Manzano — Sp3lunky</div>
+
+          <div class="l-role" style="top:462px;">METZGER</div>
+          <div class="l-actor" style="top:477px;">Bailey Geen — stab0talksVA</div>
+
+          <div class="l-role" style="top:514px;">ZAIUS</div>
+          <div class="l-actor" style="top:529px;">sedatednerves</div>
+
+          <div class="l-role" style="top:566px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:581px;">Halyze</div>
+
+          <div class="l-role" style="top:618px;">JENNY</div>
+          <div class="l-actor" style="top:633px;">Kiti Celine</div>
+
+          <div class="l-role" style="top:670px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:685px;">Lewis Saunders</div>
+
+          <div class="l-role" style="top:722px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:737px;">Matt Bartlett</div>
+
+          <div class="l-role" style="top:774px;">BIG JESUS MORDINO</div>
+          <div class="l-actor" style="top:789px;">Enrico Leone</div>
+
+          <div class="l-role" style="top:826px;">TORR BUCKNER · FRANCIS</div>
+          <div class="l-actor" style="top:841px;">David Pastore-Theriaque</div>
+
+          <div class="l-role" style="top:878px;">LOUISE</div>
+          <div class="l-actor" style="top:893px;">Billy Graves</div>
+
+          <div class="l-role" style="top:930px;">CHAD</div>
+          <div class="l-actor" style="top:945px;">Sn8kezz</div>
+
+          <div class="l-role" style="top:982px;">KROM</div>
+          <div class="l-actor" style="top:997px;">Jeremy Lindsay</div>
+
+          <div class="l-role" style="top:1034px;">LYDIA</div>
+          <div class="l-actor" style="top:1049px;">Juliet Blank</div>
+
+          <div class="l-special">SPECIAL THANKS</div>
+          <div class="l-thanks" style="top:1175px;">Goat_Boy — Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1197px;">Black_Electric — THAT Mod</div>
+          <div class="l-thanks" style="top:1219px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1241px;">The Fallout 2 Community</div>
+        </div>
+
+        <div class="crawl-block">
+          <div class="l-title glow">V.O.C.K.</div>
+          <div class="l-script glow">Vocal Output Creation Kit</div>
+          <div class="l-tagline">Fallout 2 Voice Modding Pipeline</div>
+
+          <div class="l-credits glow">CREDITS</div>
+
+          <div class="l-createdby">CREATED &amp; MANAGED BY</div>
+          <div class="l-name glow">Fede the Dwelt Vauller</div>
+
+          <div class="l-voiceactors">VOICE ACTORS</div>
+
+          <div class="l-role" style="top:254px;">SKEETER · VEGEIR</div>
+          <div class="l-actor" style="top:269px;">Joshua Luther</div>
+
+          <div class="l-role" style="top:306px;">KEITH WRIGHT</div>
+          <div class="l-actor" style="top:321px;">dar_duck</div>
+
+          <div class="l-role" style="top:358px;">ERIC</div>
+          <div class="l-actor" style="top:373px;">KalleKannibal</div>
+
+          <div class="l-role" style="top:410px;">KAGA · CHUCK DUNTON</div>
+          <div class="l-actor" style="top:425px;">Richard Manzano — Sp3lunky</div>
+
+          <div class="l-role" style="top:462px;">METZGER</div>
+          <div class="l-actor" style="top:477px;">Bailey Geen — stab0talksVA</div>
+
+          <div class="l-role" style="top:514px;">ZAIUS</div>
+          <div class="l-actor" style="top:529px;">sedatednerves</div>
+
+          <div class="l-role" style="top:566px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:581px;">Halyze</div>
+
+          <div class="l-role" style="top:618px;">JENNY</div>
+          <div class="l-actor" style="top:633px;">Kiti Celine</div>
+
+          <div class="l-role" style="top:670px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:685px;">Lewis Saunders</div>
+
+          <div class="l-role" style="top:722px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:737px;">Matt Bartlett</div>
+
+          <div class="l-role" style="top:774px;">BIG JESUS MORDINO</div>
+          <div class="l-actor" style="top:789px;">Enrico Leone</div>
+
+          <div class="l-role" style="top:826px;">TORR BUCKNER · FRANCIS</div>
+          <div class="l-actor" style="top:841px;">David Pastore-Theriaque</div>
+
+          <div class="l-role" style="top:878px;">LOUISE</div>
+          <div class="l-actor" style="top:893px;">Billy Graves</div>
+
+          <div class="l-role" style="top:930px;">CHAD</div>
+          <div class="l-actor" style="top:945px;">Sn8kezz</div>
+
+          <div class="l-role" style="top:982px;">KROM</div>
+          <div class="l-actor" style="top:997px;">Jeremy Lindsay</div>
+
+          <div class="l-role" style="top:1034px;">LYDIA</div>
+          <div class="l-actor" style="top:1049px;">Juliet Blank</div>
+
+          <div class="l-special">SPECIAL THANKS</div>
+          <div class="l-thanks" style="top:1175px;">Goat_Boy — Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1197px;">Black_Electric — THAT Mod</div>
+          <div class="l-thanks" style="top:1219px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1241px;">The Fallout 2 Community</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
