@@ -119,6 +119,34 @@
   .cd-time4{ left:162px; top:17px; }
   .cd-sec1{ left:177px; top:17px; }
   .cd-sec2{ left:186px; top:17px; }
+
+  /* Little red buttons (STATUS/AUTOMAPS/ARCHIVES/CLOSE), positioned over
+     the LEDs baked into the photo. Whole row is clickable; only the LED
+     sprite swaps on press, matching the original lilredup/lilreddn frames. */
+  .btn-row{
+    position:absolute;
+    left:53px;
+    width:160px;
+    height:26px;
+    background:transparent;
+    border:0;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+  }
+  .btn-status{ top:334px; }
+  .btn-automaps{ top:387px; }
+  .btn-archives{ top:416px; }
+  .btn-close{ top:442px; }
+  .btn-row .led{
+    position:absolute;
+    left:0;
+    top:5px;
+    width:15px;
+    height:16px;
+    image-rendering:pixelated;
+    pointer-events:none;
+  }
 </style>
 </head>
 <body>
@@ -142,6 +170,19 @@
       <img class="cd cd-sec1" alt="">
       <img class="cd cd-sec2" alt="">
     </div>
+
+    <button type="button" class="btn-row btn-status" aria-label="Status">
+      <img class="led" src="assets/images/lilredup.png" alt="">
+    </button>
+    <button type="button" class="btn-row btn-automaps" aria-label="Automaps">
+      <img class="led" src="assets/images/lilredup.png" alt="">
+    </button>
+    <button type="button" class="btn-row btn-archives" aria-label="Archives">
+      <img class="led" src="assets/images/lilredup.png" alt="">
+    </button>
+    <button type="button" class="btn-row btn-close" aria-label="Close">
+      <img class="led" src="assets/images/lilredup.png" alt="">
+    </button>
 
     <div class="screen">
       <div class="crawl-track">
@@ -300,6 +341,36 @@
   }
   resizeStage();
   window.addEventListener('resize', resizeStage);
+
+  var pressSound = new Audio('assets/audio/button_press.wav');
+  var releaseSound = new Audio('assets/audio/button_release.wav');
+
+  document.querySelectorAll('.btn-row').forEach(function(btn){
+    var led = btn.querySelector('.led');
+    var pressed = false;
+
+    function press(){
+      if (pressed) return;
+      pressed = true;
+      led.src = 'assets/images/lilreddn.png';
+      pressSound.currentTime = 0;
+      pressSound.play();
+    }
+
+    function release(){
+      if (!pressed) return;
+      pressed = false;
+      led.src = 'assets/images/lilredup.png';
+      releaseSound.currentTime = 0;
+      releaseSound.play();
+    }
+
+    btn.addEventListener('mousedown', press);
+    btn.addEventListener('touchstart', press);
+    btn.addEventListener('mouseup', release);
+    btn.addEventListener('mouseleave', release);
+    btn.addEventListener('touchend', release);
+  });
 
   var MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
   var GLYPHS = 'assets/glyphs/';
