@@ -99,9 +99,6 @@
   .l-thanks{ font-size:14px; opacity:0.95; }
   .l-qa{ top:1093px; font-size:11px; letter-spacing:3px; opacity:0.7; }
 
-  .crawl-track a{ color:inherit; text-decoration:none; }
-  .crawl-track a:hover{ text-decoration:underline; }
-
   /* Date/time readout, positioned using the original Pip-Boy engine's
      digit-slot coordinates so it lines up with the device's LCD strip. */
   .clock{ position:absolute; left:0; top:0; width:640px; height:480px; }
@@ -121,27 +118,28 @@
   .cd-sec2{ left:186px; top:17px; }
 
   /* Little red buttons (STATUS/AUTOMAPS/ARCHIVES/CLOSE), positioned over
-     the LEDs baked into the photo. Whole row is clickable; only the LED
-     sprite swaps on press, matching the original lilredup/lilreddn frames. */
+     the LEDs baked into the photo. Clickable area matches the LED sprite
+     itself; swaps to lilreddn on press, matching the original frames. */
   .btn-row{
     position:absolute;
     left:53px;
-    width:160px;
-    height:26px;
+    width:15px;
+    height:16px;
     background:transparent;
     border:0;
     padding:0;
     margin:0;
     cursor:pointer;
+    clip-path:circle(50%);
   }
-  .btn-status{ top:334px; }
-  .btn-automaps{ top:387px; }
-  .btn-archives{ top:416px; }
-  .btn-close{ top:442px; }
+  .btn-status{ top:339px; }
+  .btn-automaps{ top:392px; }
+  .btn-archives{ top:421px; }
+  .btn-close{ top:447px; }
   .btn-row .led{
     position:absolute;
     left:0;
-    top:5px;
+    top:0;
     width:15px;
     height:16px;
     image-rendering:pixelated;
@@ -247,7 +245,7 @@
           <div class="l-actor" style="top:1049px;">Juliet Blank</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1121px;"><a href="https://www.facebook.com/CJaredCastor/" target="_blank" rel="noopener">C. Jared Castor</a></div>
+          <div class="l-thanks" style="top:1121px;">C. Jared Castor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
           <div class="l-thanks" style="top:1175px;">Goat_Boy — Talking Heads Mod</div>
@@ -317,7 +315,7 @@
           <div class="l-actor" style="top:1049px;">Juliet Blank</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1121px;"><a href="https://www.facebook.com/CJaredCastor/" target="_blank" rel="noopener">C. Jared Castor</a></div>
+          <div class="l-thanks" style="top:1121px;">C. Jared Castor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
           <div class="l-thanks" style="top:1175px;">Goat_Boy — Talking Heads Mod</div>
