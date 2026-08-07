@@ -59,6 +59,7 @@
     height:480px;
     overflow:hidden;
     clip-path:path('M608,30 L256,30 L243,39 L245,173 L249,343 L249,449 L252,457 L257,462 L264,466 L274,467 L294,468 L338,470 L434,469 L489,469 L531,468 L552,468 L573,465 L594,462 L610,455 L613,449 L619,282 L624,155 L630,63 L630,51 L626,42 L620,35 L612,31 Z');
+    transform-origin:436px 250px;
   }
   .screen::after{
     content:"";
@@ -71,6 +72,79 @@
     pointer-events:none;
   }
 
+  /* CRT power-cycle transition: the whole clipped screen shape collapses
+     to a horizontal line, then to a point, matching an old TV switching
+     off; reversed on the way back in. Content swap happens at the pinch
+     point, hidden by the near-zero scale. */
+  @keyframes tvOff{
+    0%{ transform:scale(1,1); opacity:1; }
+    55%{ transform:scale(1,0.025); opacity:1; }
+    100%{ transform:scale(0,0.025); opacity:0.4; }
+  }
+  @keyframes tvOn{
+    0%{ transform:scale(0,0.025); opacity:0.4; }
+    45%{ transform:scale(1,0.025); opacity:1; }
+    100%{ transform:scale(1,1); opacity:1; }
+  }
+  .screen.tv-off{ animation:tvOff 260ms ease-in forwards; }
+  .screen.tv-on{ animation:tvOn 260ms ease-out forwards; }
+
+  /* Swappable screen panels: credits crawl, links, changelog. */
+  .panel{ position:absolute; inset:0; display:none; }
+  .panel.active{ display:block; }
+
+  .static-panel{
+    position:absolute;
+    left:240px;
+    top:0;
+    width:395px;
+    text-align:center;
+    color:var(--green);
+    text-shadow:0 0 3px rgba(60,248,0,0.45);
+    font-family:'Fallout';
+  }
+  .static-panel div, .static-panel a{ position:absolute; left:0; width:100%; }
+  .panel-title{ top:40px; font-size:16px; font-weight:700; letter-spacing:4px; }
+  .panel-title span{ display:inline-block; padding-bottom:3px; border-bottom:3px solid var(--green); }
+  .panel-title span::after{ content:''; display:inline-block; width:0; margin-right:-4px; }
+  .status-item{
+    display:block;
+    text-align:left;
+    padding-left:14px;
+    box-sizing:border-box;
+    font-size:16px;
+    opacity:0.95;
+    color:inherit;
+    text-decoration:none;
+    font-family:inherit;
+    text-shadow:inherit;
+  }
+  .status-item:hover, .status-item:focus{ text-decoration:underline; }
+  .empty-msg{ font-size:14px; opacity:0.85; }
+
+  /* Changelog: static (no scrolling), laid out in normal flow so entries
+     of varying length wrap naturally. Narrower than the base 395px since
+     the CRT screen shape is curved, not rectangular, and wide flow-wrapped
+     text can run into the glass edge at some scroll heights (see the
+     tighter box also used for other multi-line content). */
+  .cl-panel{
+    position:absolute;
+    left:262px;
+    top:40px;
+    width:340px;
+    text-align:center;
+    color:var(--green);
+    text-shadow:0 0 3px rgba(60,248,0,0.45);
+    font-family:'Fallout';
+  }
+  .cl-title{ font-size:16px; font-weight:700; letter-spacing:4px; margin-bottom:22px; }
+  .cl-title span{ display:inline-block; padding-bottom:3px; border-bottom:3px solid var(--green); }
+  .cl-title span::after{ content:''; display:inline-block; width:0; margin-right:-4px; }
+  .cl-version{ font-size:12px; font-weight:700; letter-spacing:2px; margin-top:9px; }
+  .cl-item{ font-size:10px; opacity:0.85; margin-top:2px; line-height:1.25; }
+  .cl-link{ display:block; margin-top:14px; font-size:12px; color:inherit; text-decoration:none; }
+  .cl-link:hover, .cl-link:focus{ text-decoration:underline; }
+
   .crawl-track{
     position:absolute;
     left:240px;
@@ -80,10 +154,10 @@
     color:var(--green);
     text-shadow:0 0 3px rgba(60,248,0,0.45);
     font-family:'Fallout';
-    animation:crawl 49s linear infinite;
+    animation:crawl 52.3s linear infinite;
   }
   .crawl-block{ position:relative; }
-  .crawl-block + .crawl-block{ position:absolute; top:1742px; left:0; width:100%; }
+  .crawl-block + .crawl-block{ position:absolute; top:1858px; left:0; width:100%; }
   .crawl-track div{
     position:absolute;
     left:0;
@@ -91,7 +165,7 @@
   }
   @keyframes crawl{
     from{ transform:translateY(470px); }
-    to{ transform:translateY(-1272px); }
+    to{ transform:translateY(-1388px); }
   }
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
@@ -194,25 +268,26 @@
       <img class="cd cd-sec2" alt="">
     </div>
 
-    <button type="button" class="btn-row btn-button-1" aria-label="Button 1">
+    <button type="button" class="btn-row btn-button-1" aria-label="Credits" data-target="credits">
       <img class="led" src="assets/images/lilredup.png" alt="">
     </button>
-    <button type="button" class="btn-row btn-button-2" aria-label="Button 2">
+    <button type="button" class="btn-row btn-button-2" aria-label="Links" data-target="links">
       <img class="led" src="assets/images/lilredup.png" alt="">
     </button>
-    <button type="button" class="btn-row btn-button-3" aria-label="Button 3">
+    <button type="button" class="btn-row btn-button-3" aria-label="Changelog" data-target="changelog">
       <img class="led" src="assets/images/lilredup.png" alt="">
     </button>
-    <button type="button" class="btn-row btn-button-4" aria-label="Button 4">
+    <button type="button" class="btn-row btn-button-4" aria-label="Button 4" data-target="empty">
       <img class="led" src="assets/images/lilredup.png" alt="">
     </button>
 
-    <div class="btn-label label-button-1">STATUS</div>
-    <div class="btn-label label-button-2">AUTOMAPS</div>
-    <div class="btn-label label-button-3">ARCHIVES</div>
-    <div class="btn-label label-button-4">CLOSE</div>
+    <div class="btn-label label-button-1">CREDITS</div>
+    <div class="btn-label label-button-2">LINKS</div>
+    <div class="btn-label label-button-3">CHANGELOG</div>
+    <div class="btn-label label-button-4"></div>
 
     <div class="screen">
+     <div class="panel panel-credits active" id="panel-credits">
       <div class="crawl-track">
         <div class="crawl-block">
           <div class="l-title glow">V.O.C.K.</div>
@@ -362,6 +437,61 @@
           <div class="l-thanks" style="top:1357px;">The Fallout 2 Community</div>
         </div>
       </div>
+     </div>
+
+     <div class="panel panel-links" id="panel-links">
+      <div class="static-panel">
+        <div class="panel-title"><span>LINKS</span></div>
+
+        <a class="status-item" style="top:82px;" href="https://www.nexusmods.com/fallout2/mods/176" target="_blank" rel="noopener noreferrer">Mod Download</a>
+        <a class="status-item" style="top:114px;" href="https://docs.google.com/document/d/1O3qYf32lPOdSYZb2ATOSs5dT0LtwPwprfYCKdnB_83o/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Talking Heads Audition List</a>
+        <a class="status-item" style="top:146px;" href="https://www.castingcall.club/projects/vock-fallout-2-voice-mod" target="_blank" rel="noopener noreferrer">Casting Call Club</a>
+        <a class="status-item" style="top:178px;" href="https://www.youtube.com/@DweltVauller" target="_blank" rel="noopener noreferrer">Youtube Channel</a>
+        <a class="status-item" style="top:210px;" href="https://github.com/dweltvauller/" target="_blank" rel="noopener noreferrer">Source Code</a>
+        <a class="status-item" style="top:242px;" href="https://www.nma-fallout.com/threads/v-o-c-k-vocal-output-creation-kit.223303/" target="_blank" rel="noopener noreferrer">NMA Thread</a>
+        <a class="status-item" style="top:274px;" href="https://discord.gg/pErXDY59Jw" target="_blank" rel="noopener noreferrer">Discord Server</a>
+      </div>
+     </div>
+
+     <div class="panel panel-changelog" id="panel-changelog">
+      <div class="cl-panel">
+        <div class="cl-title"><span>CHANGELOG</span></div>
+
+        <div class="cl-version">WIP</div>
+        <div class="cl-item">Louise (Redding), Zaius (Broken Hills)</div>
+
+        <div class="cl-version">v1.11</div>
+        <div class="cl-item">Added voices: Lydia (Vault City)</div>
+        <div class="cl-item">Fixed Talking Head bugs related to Don and Kurisu (head was not displayed)</div>
+
+        <div class="cl-version">v1.10</div>
+        <div class="cl-item">Fixed several bugs related to text concatenation and audio misplacement</div>
+
+        <div class="cl-version">v1.9</div>
+        <div class="cl-item">Added voices: Chad (Broken Hills), Christopher Wright (New Reno)</div>
+
+        <div class="cl-version">v1.8</div>
+        <div class="cl-item">Added voices: Skeeter (Gecko)</div>
+
+        <div class="cl-version">v1.7</div>
+        <div class="cl-item">Added voices: Torr Buckner (Klamath), Keith Wright (New Reno), Brother Paul (Abbey)</div>
+
+        <div class="cl-version">v1.6</div>
+        <div class="cl-item">Added voices: Kaga (Special Encounter), Zomak (Gecko), Eric (Broken Hills)</div>
+
+        <a class="cl-link" href="https://github.com/dweltvauller/vock-fo2/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Full Changelog &#8599;</a>
+      </div>
+     </div>
+
+     <div class="panel panel-empty" id="panel-empty">
+      <div class="static-panel">
+        <div class="panel-title glow"><span>???</span></div>
+
+        <div class="empty-msg" style="top:180px;">There's nothing here.</div>
+        <div class="empty-msg" style="top:210px;">It's an empty button.</div>
+        <div class="empty-msg" style="top:240px;">What are you trying to do?</div>
+      </div>
+     </div>
     </div>
 
   </div>
@@ -406,7 +536,54 @@
     btn.addEventListener('mouseup', release);
     btn.addEventListener('mouseleave', release);
     btn.addEventListener('touchend', release);
+
+    if (btn.dataset.target){
+      btn.addEventListener('click', function(){
+        switchPanel(btn.dataset.target);
+      });
+    }
   });
+
+  // CRT power-cycle screen switch: collapse the clipped screen shape to a
+  // line then a point, swap the active panel at the pinch, expand back out.
+  var screenEl = document.querySelector('.screen');
+  var panels = {
+    credits: document.getElementById('panel-credits'),
+    links: document.getElementById('panel-links'),
+    changelog: document.getElementById('panel-changelog'),
+    empty: document.getElementById('panel-empty')
+  };
+  var currentPanel = 'credits';
+  var transitioning = false;
+
+  function switchPanel(name){
+    if (transitioning || name === currentPanel || !panels[name]) return;
+    transitioning = true;
+
+    screenEl.classList.remove('tv-on');
+    void screenEl.offsetWidth;
+    screenEl.classList.add('tv-off');
+
+    screenEl.addEventListener('animationend', function offEnd(e){
+      if (e.animationName !== 'tvOff') return;
+      screenEl.removeEventListener('animationend', offEnd);
+
+      panels[currentPanel].classList.remove('active');
+      panels[name].classList.add('active');
+      currentPanel = name;
+
+      screenEl.classList.remove('tv-off');
+      void screenEl.offsetWidth;
+      screenEl.classList.add('tv-on');
+
+      screenEl.addEventListener('animationend', function onEnd(e2){
+        if (e2.animationName !== 'tvOn') return;
+        screenEl.removeEventListener('animationend', onEnd);
+        screenEl.classList.remove('tv-on');
+        transitioning = false;
+      });
+    });
+  }
 
   var MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
   var GLYPHS = 'assets/glyphs/';
