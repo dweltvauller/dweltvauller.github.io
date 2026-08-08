@@ -177,19 +177,25 @@
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
 
-  .l-title{ top:-35px; font-size:44px; font-weight:600; letter-spacing:3px; }
-  .l-script{ top:26px; font-size:16px; opacity:0.9; }
-  .l-tagline{ top:60px; font-size:10px; letter-spacing:2px; opacity:0.5; }
-  .l-credits{ top:117px; font-size:16px; font-weight:700; letter-spacing:4px; }
-  .l-createdby{ top:153px; font-size:11px; letter-spacing:3px; opacity:0.7; }
-  .l-name{ top:172px; font-size:18px; }
-  .l-voiceactors{ top:219px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-logo{
+    position:absolute;
+    left:50%;
+    top:-35px;
+    width:210px;
+    transform:translateX(-50%);
+    filter:drop-shadow(0 0 3px rgba(60,248,0,0.45));
+  }
+  .l-tagline{ top:145px; font-size:10px; letter-spacing:2px; opacity:0.5; }
+  .l-credits{ top:202px; font-size:16px; font-weight:700; letter-spacing:4px; }
+  .l-createdby{ top:238px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-name{ top:257px; font-size:18px; }
+  .l-voiceactors{ top:304px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
   .l-actor{ font-size:14px; opacity:0.95; }
-  .l-special{ top:1261px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-special{ top:1346px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
-  .l-qa{ top:1093px; font-size:11px; letter-spacing:3px; opacity:0.7; }
-  .l-art{ top:1166px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-qa{ top:1178px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-art{ top:1251px; font-size:11px; letter-spacing:3px; opacity:0.7; }
 
   /* Date/time readout, positioned using the original Pip-Boy engine's
      digit-slot coordinates so it lines up with the device's LCD strip. */
@@ -298,8 +304,7 @@
      <div class="panel panel-credits active" id="panel-credits">
       <div class="crawl-track">
         <div class="crawl-block">
-          <div class="l-title glow">V.O.C.K.</div>
-          <div class="l-script glow">Vocal Output Creation Kit</div>
+          <img class="l-logo" src="assets/images/logo-crawl.png" alt="V.O.C.K. — Vocal Output Creation Kit">
           <div class="l-tagline">Fallout 2 Voice Modding Pipeline</div>
 
           <div class="l-credits glow">CREDITS</div>
@@ -309,71 +314,70 @@
 
           <div class="l-voiceactors">VOICE ACTORS</div>
 
-          <div class="l-role" style="top:254px;">SKEETER · VEGEIR</div>
-          <div class="l-actor" style="top:269px;">Joshua Luther</div>
+          <div class="l-role" style="top:339px;">SKEETER · VEGEIR</div>
+          <div class="l-actor" style="top:354px;">Joshua Luther</div>
 
-          <div class="l-role" style="top:306px;">KEITH WRIGHT</div>
-          <div class="l-actor" style="top:321px;">dar_duck</div>
+          <div class="l-role" style="top:391px;">KEITH WRIGHT</div>
+          <div class="l-actor" style="top:406px;">dar_duck</div>
 
-          <div class="l-role" style="top:358px;">ERIC</div>
-          <div class="l-actor" style="top:373px;">KALLEKANNIBAL</div>
+          <div class="l-role" style="top:443px;">ERIC</div>
+          <div class="l-actor" style="top:458px;">KALLEKANNIBAL</div>
 
-          <div class="l-role" style="top:410px;">KAGA · CHUCK DUNTON</div>
-          <div class="l-actor" style="top:425px;">Richard Manzano - Sp3lunky</div>
+          <div class="l-role" style="top:495px;">KAGA · CHUCK DUNTON</div>
+          <div class="l-actor" style="top:510px;">Richard Manzano - Sp3lunky</div>
 
-          <div class="l-role" style="top:462px;">METZGER</div>
-          <div class="l-actor" style="top:477px;">Bailey Geen - stab0talksVA</div>
+          <div class="l-role" style="top:547px;">METZGER</div>
+          <div class="l-actor" style="top:562px;">Bailey Geen - stab0talksVA</div>
 
-          <div class="l-role" style="top:514px;">ZAIUS</div>
-          <div class="l-actor" style="top:529px;">sedatednerves</div>
+          <div class="l-role" style="top:599px;">ZAIUS</div>
+          <div class="l-actor" style="top:614px;">sedatednerves</div>
 
-          <div class="l-role" style="top:566px;">CHRISTOPHER WRIGHT</div>
-          <div class="l-actor" style="top:581px;">Halyze</div>
+          <div class="l-role" style="top:651px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:666px;">Halyze</div>
 
-          <div class="l-role" style="top:618px;">JENNY</div>
-          <div class="l-actor" style="top:633px;">Kiti Celine</div>
+          <div class="l-role" style="top:703px;">JENNY</div>
+          <div class="l-actor" style="top:718px;">Kiti Celine</div>
 
-          <div class="l-role" style="top:670px;">ZOMAK THE DESTROYER · OLD JOE</div>
-          <div class="l-actor" style="top:685px;">Lewis Saunders</div>
+          <div class="l-role" style="top:755px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:770px;">Lewis Saunders</div>
 
-          <div class="l-role" style="top:722px;">BROTHER PAUL</div>
-          <div class="l-actor" style="top:737px;">Matt Bartlett</div>
+          <div class="l-role" style="top:807px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:822px;">Matt Bartlett</div>
 
-          <div class="l-role" style="top:774px;">BIG JESUS MORDINO</div>
-          <div class="l-actor" style="top:789px;">Enrico Leone</div>
+          <div class="l-role" style="top:859px;">BIG JESUS MORDINO</div>
+          <div class="l-actor" style="top:874px;">Enrico Leone</div>
 
-          <div class="l-role" style="top:826px;">TORR BUCKNER · FRANCIS</div>
-          <div class="l-actor" style="top:841px;">David Pastore-Theriaque</div>
+          <div class="l-role" style="top:911px;">TORR BUCKNER · FRANCIS</div>
+          <div class="l-actor" style="top:926px;">David Pastore-Theriaque</div>
 
-          <div class="l-role" style="top:878px;">LOUISE</div>
-          <div class="l-actor" style="top:893px;">Billy Graves</div>
+          <div class="l-role" style="top:963px;">LOUISE</div>
+          <div class="l-actor" style="top:978px;">Billy Graves</div>
 
-          <div class="l-role" style="top:930px;">CHAD</div>
-          <div class="l-actor" style="top:945px;">Sn8kezz</div>
+          <div class="l-role" style="top:1015px;">CHAD</div>
+          <div class="l-actor" style="top:1030px;">Sn8kezz</div>
 
-          <div class="l-role" style="top:982px;">KROM</div>
-          <div class="l-actor" style="top:997px;">Jeremy Lindsay</div>
+          <div class="l-role" style="top:1067px;">KROM</div>
+          <div class="l-actor" style="top:1082px;">Jeremy Lindsay</div>
 
-          <div class="l-role" style="top:1034px;">LYDIA</div>
-          <div class="l-actor" style="top:1049px;">Juliet Blank</div>
+          <div class="l-role" style="top:1119px;">LYDIA</div>
+          <div class="l-actor" style="top:1134px;">Juliet Blank</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1121px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1206px;">C. Jared Castor</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1194px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1216px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1279px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1301px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1291px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1313px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:1335px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:1357px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1376px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1398px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:1420px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1442px;">The Fallout 2 Community</div>
         </div>
 
         <div class="crawl-block">
-          <div class="l-title glow">V.O.C.K.</div>
-          <div class="l-script glow">Vocal Output Creation Kit</div>
+          <img class="l-logo" src="assets/images/logo-crawl.png" alt="V.O.C.K. — Vocal Output Creation Kit">
           <div class="l-tagline">Fallout 2 Voice Modding Pipeline</div>
 
           <div class="l-credits glow">CREDITS</div>
@@ -383,66 +387,66 @@
 
           <div class="l-voiceactors">VOICE ACTORS</div>
 
-          <div class="l-role" style="top:254px;">SKEETER · VEGEIR</div>
-          <div class="l-actor" style="top:269px;">Joshua Luther</div>
+          <div class="l-role" style="top:339px;">SKEETER · VEGEIR</div>
+          <div class="l-actor" style="top:354px;">Joshua Luther</div>
 
-          <div class="l-role" style="top:306px;">KEITH WRIGHT</div>
-          <div class="l-actor" style="top:321px;">dar_duck</div>
+          <div class="l-role" style="top:391px;">KEITH WRIGHT</div>
+          <div class="l-actor" style="top:406px;">dar_duck</div>
 
-          <div class="l-role" style="top:358px;">ERIC</div>
-          <div class="l-actor" style="top:373px;">KALLEKANNIBAL</div>
+          <div class="l-role" style="top:443px;">ERIC</div>
+          <div class="l-actor" style="top:458px;">KALLEKANNIBAL</div>
 
-          <div class="l-role" style="top:410px;">KAGA · CHUCK DUNTON</div>
-          <div class="l-actor" style="top:425px;">Richard Manzano - Sp3lunky</div>
+          <div class="l-role" style="top:495px;">KAGA · CHUCK DUNTON</div>
+          <div class="l-actor" style="top:510px;">Richard Manzano - Sp3lunky</div>
 
-          <div class="l-role" style="top:462px;">METZGER</div>
-          <div class="l-actor" style="top:477px;">Bailey Geen - stab0talksVA</div>
+          <div class="l-role" style="top:547px;">METZGER</div>
+          <div class="l-actor" style="top:562px;">Bailey Geen - stab0talksVA</div>
 
-          <div class="l-role" style="top:514px;">ZAIUS</div>
-          <div class="l-actor" style="top:529px;">sedatednerves</div>
+          <div class="l-role" style="top:599px;">ZAIUS</div>
+          <div class="l-actor" style="top:614px;">sedatednerves</div>
 
-          <div class="l-role" style="top:566px;">CHRISTOPHER WRIGHT</div>
-          <div class="l-actor" style="top:581px;">Halyze</div>
+          <div class="l-role" style="top:651px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:666px;">Halyze</div>
 
-          <div class="l-role" style="top:618px;">JENNY</div>
-          <div class="l-actor" style="top:633px;">Kiti Celine</div>
+          <div class="l-role" style="top:703px;">JENNY</div>
+          <div class="l-actor" style="top:718px;">Kiti Celine</div>
 
-          <div class="l-role" style="top:670px;">ZOMAK THE DESTROYER · OLD JOE</div>
-          <div class="l-actor" style="top:685px;">Lewis Saunders</div>
+          <div class="l-role" style="top:755px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:770px;">Lewis Saunders</div>
 
-          <div class="l-role" style="top:722px;">BROTHER PAUL</div>
-          <div class="l-actor" style="top:737px;">Matt Bartlett</div>
+          <div class="l-role" style="top:807px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:822px;">Matt Bartlett</div>
 
-          <div class="l-role" style="top:774px;">BIG JESUS MORDINO</div>
-          <div class="l-actor" style="top:789px;">Enrico Leone</div>
+          <div class="l-role" style="top:859px;">BIG JESUS MORDINO</div>
+          <div class="l-actor" style="top:874px;">Enrico Leone</div>
 
-          <div class="l-role" style="top:826px;">TORR BUCKNER · FRANCIS</div>
-          <div class="l-actor" style="top:841px;">David Pastore-Theriaque</div>
+          <div class="l-role" style="top:911px;">TORR BUCKNER · FRANCIS</div>
+          <div class="l-actor" style="top:926px;">David Pastore-Theriaque</div>
 
-          <div class="l-role" style="top:878px;">LOUISE</div>
-          <div class="l-actor" style="top:893px;">Billy Graves</div>
+          <div class="l-role" style="top:963px;">LOUISE</div>
+          <div class="l-actor" style="top:978px;">Billy Graves</div>
 
-          <div class="l-role" style="top:930px;">CHAD</div>
-          <div class="l-actor" style="top:945px;">Sn8kezz</div>
+          <div class="l-role" style="top:1015px;">CHAD</div>
+          <div class="l-actor" style="top:1030px;">Sn8kezz</div>
 
-          <div class="l-role" style="top:982px;">KROM</div>
-          <div class="l-actor" style="top:997px;">Jeremy Lindsay</div>
+          <div class="l-role" style="top:1067px;">KROM</div>
+          <div class="l-actor" style="top:1082px;">Jeremy Lindsay</div>
 
-          <div class="l-role" style="top:1034px;">LYDIA</div>
-          <div class="l-actor" style="top:1049px;">Juliet Blank</div>
+          <div class="l-role" style="top:1119px;">LYDIA</div>
+          <div class="l-actor" style="top:1134px;">Juliet Blank</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1121px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1206px;">C. Jared Castor</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1194px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1216px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1279px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1301px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1291px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1313px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:1335px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:1357px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1376px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1398px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:1420px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1442px;">The Fallout 2 Community</div>
         </div>
       </div>
      </div>
