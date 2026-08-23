@@ -133,7 +133,11 @@
      of varying length wrap naturally. Narrower than the base 395px since
      the CRT screen shape is curved, not rectangular, and wide flow-wrapped
      text can run into the glass edge at some scroll heights (see the
-     tighter box also used for other multi-line content). */
+     tighter box also used for other multi-line content). Since there's no
+     scroll, the markup only lists WIP + the latest ~3 tagged versions --
+     showing the full history overflows past the bottom of the CRT shape.
+     Older entries live behind the "Full Changelog" link instead; when
+     trimming for a new release, drop from the bottom to keep it that way. */
   .cl-panel{
     position:absolute;
     left:262px;
@@ -161,10 +165,20 @@
     color:var(--green);
     text-shadow:0 0 3px rgba(60,248,0,0.45);
     font-family:'Fallout';
-    animation:crawl 57.6s linear infinite;
+    animation:crawl 60.6s linear infinite;
   }
   .crawl-block{ position:relative; }
-  .crawl-block + .crawl-block{ position:absolute; top:2044px; left:0; width:100%; }
+  /* Loop math: the two numbers below (block spacing and the keyframe's "to"
+     translateY) must always be equal in magnitude -- that's what makes the
+     two duplicated .crawl-block copies line up seamlessly. That shared
+     value must also exceed the actual content height (last item's bottom
+     edge, currently ~1639px) by a healthy margin (~40px+), or the last
+     line snaps back before it finishes scrolling past the top of the CRT
+     screen -- it "vanishes" mid-scroll right as the next block's logo
+     enters. When adding/removing credits lines, recompute both numbers
+     from the new content height, and keep the animation-duration in sync
+     so scroll speed stays constant (speed = spacing / duration). */
+  .crawl-block + .crawl-block{ position:absolute; top:2150px; left:0; width:100%; }
   .crawl-track div{
     position:absolute;
     left:0;
@@ -172,7 +186,7 @@
   }
   @keyframes crawl{
     from{ transform:translateY(470px); }
-    to{ transform:translateY(-1574px); }
+    to{ transform:translateY(-1680px); }
   }
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
@@ -192,10 +206,10 @@
   .l-voiceactors{ top:304px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
   .l-actor{ font-size:14px; opacity:0.95; }
-  .l-special{ top:1472px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-special{ top:1524px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
-  .l-qa{ top:1282px; font-size:11px; letter-spacing:3px; opacity:0.7; }
-  .l-art{ top:1377px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-qa{ top:1334px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-art{ top:1429px; font-size:11px; letter-spacing:3px; opacity:0.7; }
 
   /* Date/time readout, positioned using the original Pip-Boy engine's
      digit-slot coordinates so it lines up with the device's LCD strip. */
@@ -368,19 +382,22 @@
           <div class="l-role" style="top:1223px;">ARTHUR PENDRAGON</div>
           <div class="l-actor" style="top:1238px;">Tsovir</div>
 
+          <div class="l-role" style="top:1275px;">HANK</div>
+          <div class="l-actor" style="top:1290px;">PaleFreak</div>
+
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1310px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1332px;">LebronJane</div>
+          <div class="l-thanks" style="top:1362px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1384px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1405px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1427px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1457px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1479px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1502px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1524px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:1546px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:1568px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1554px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1576px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:1598px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1620px;">The Fallout 2 Community</div>
         </div>
 
         <div class="crawl-block">
@@ -448,19 +465,22 @@
           <div class="l-role" style="top:1223px;">ARTHUR PENDRAGON</div>
           <div class="l-actor" style="top:1238px;">Tsovir</div>
 
+          <div class="l-role" style="top:1275px;">HANK</div>
+          <div class="l-actor" style="top:1290px;">PaleFreak</div>
+
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1310px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1332px;">LebronJane</div>
+          <div class="l-thanks" style="top:1362px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1384px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1405px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1427px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1457px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1479px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1502px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1524px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:1546px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:1568px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1554px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:1576px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:1598px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:1620px;">The Fallout 2 Community</div>
         </div>
       </div>
      </div>
@@ -487,27 +507,15 @@
         <div class="cl-item">Louise (Redding), Zaius (Broken Hills)</div>
 
         <div class="cl-version">v1.12</div>
-        <div class="cl-item">Added voices: Vegeir (Ghost Farm), Chrissy (Broken Hills), Old Joe (Vault City), Arthur Pendragon (Special Encounter)</div>
+        <div class="cl-item">Added voices: Hank (Gecko), Chrissy (Broken Hills), Old Joe (Vault City), Arthur Pendragon (Special Encounter), Vegeir (Ghost Farm)</div>
         <div class="cl-item">Fixed Kaga sometimes not starting the Talking Head menu or spawning too far away for combat</div>
 
         <div class="cl-version">v1.11</div>
-        <div class="cl-item">Added voices: Lydia (Vault City)</div>
+        <div class="cl-item">Added voices: Lydia (Vault City), Francis (Broken Hills)</div>
         <div class="cl-item">Fixed Talking Head bugs related to Don and Kurisu (head was not displayed)</div>
 
         <div class="cl-version">v1.10</div>
         <div class="cl-item">Fixed several bugs related to text concatenation and audio misplacement</div>
-
-        <div class="cl-version">v1.9</div>
-        <div class="cl-item">Added voices: Chad (Broken Hills), Christopher Wright (New Reno)</div>
-
-        <div class="cl-version">v1.8</div>
-        <div class="cl-item">Added voices: Skeeter (Gecko)</div>
-
-        <div class="cl-version">v1.7</div>
-        <div class="cl-item">Added voices: Torr Buckner (Klamath), Keith Wright (New Reno), Brother Paul (Abbey)</div>
-
-        <div class="cl-version">v1.6</div>
-        <div class="cl-item">Added voices: Kaga (Special Encounter), Zomak (Gecko), Eric (Broken Hills)</div>
 
         <a class="cl-link" href="https://github.com/dweltvauller/vock-fo2/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Full Changelog &#8599;</a>
       </div>
