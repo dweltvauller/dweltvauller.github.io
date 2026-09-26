@@ -165,20 +165,20 @@
     color:var(--green);
     text-shadow:0 0 3px rgba(60,248,0,0.45);
     font-family:'Fallout';
-    animation:crawl 69.6s linear infinite;
+    animation:crawl 70.3s linear infinite;
   }
   .crawl-block{ position:relative; }
   /* Loop math: the two numbers below (block spacing and the keyframe's "to"
      translateY) must always be equal in magnitude -- that's what makes the
      two duplicated .crawl-block copies line up seamlessly. That shared
      value must also exceed the actual content height (last item's bottom
-     edge, currently ~2056px) by a healthy margin (~40px+), or the last
+     edge, currently ~2080px) by a healthy margin (~40px+), or the last
      line snaps back before it finishes scrolling past the top of the CRT
      screen -- it "vanishes" mid-scroll right as the next block's logo
      enters. When adding/removing credits lines, recompute both numbers
      from the new content height, and keep the animation-duration in sync
      so scroll speed stays constant (speed = spacing / duration). */
-  .crawl-block + .crawl-block{ position:absolute; top:2462px; left:0; width:100%; }
+  .crawl-block + .crawl-block{ position:absolute; top:2486px; left:0; width:100%; }
   .crawl-track div{
     position:absolute;
     left:0;
@@ -186,7 +186,7 @@
   }
   @keyframes crawl{
     from{ transform:translateY(470px); }
-    to{ transform:translateY(-1992px); }
+    to{ transform:translateY(-2016px); }
   }
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
@@ -206,10 +206,10 @@
   .l-voiceactors{ top:304px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
   .l-actor{ font-size:14px; opacity:0.95; }
-  .l-special{ top:1940px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-special{ top:1964px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
-  .l-qa{ top:1750px; font-size:11px; letter-spacing:3px; opacity:0.7; }
-  .l-art{ top:1845px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-qa{ top:1774px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-art{ top:1869px; font-size:11px; letter-spacing:3px; opacity:0.7; }
 
   /* Date/time readout, positioned using the original Pip-Boy engine's
      digit-slot coordinates so it lines up with the device's LCD strip. */
@@ -328,7 +328,7 @@
 
           <div class="l-voiceactors">VOICE ACTORS</div>
 
-          <div class="l-role" style="top:339px;">SKEETER · VEGEIR</div>
+          <div class="l-role" style="top:339px;">SKEETER · VEGEIR · SERGEANT GRANITE</div>
           <div class="l-actor" style="top:354px;">Joshua Luther</div>
 
           <div class="l-role" style="top:391px;">KEITH WRIGHT</div>
@@ -338,90 +338,92 @@
           <div class="l-actor" style="top:458px;">KALLEKANNIBAL</div>
 
           <div class="l-role" style="top:495px;">KAGA · CHUCK &amp; BUCK DUNTON</div>
-          <div class="l-actor" style="top:510px;">Richard Manzano - Sp3lunky</div>
+          <div class="l-role" style="top:507px;">SHERIFF DUMONT</div>
+          <div class="l-actor" style="top:522px;">Richard Manzano - Sp3lunky</div>
 
-          <div class="l-role" style="top:547px;">METZGER</div>
-          <div class="l-actor" style="top:562px;">Bailey Geen - stab0talksVA</div>
+          <div class="l-role" style="top:559px;">METZGER</div>
+          <div class="l-actor" style="top:574px;">Bailey Geen - stab0talksVA</div>
 
-          <div class="l-role" style="top:599px;">ZAIUS</div>
-          <div class="l-actor" style="top:614px;">sedatednerves</div>
+          <div class="l-role" style="top:611px;">ZAIUS</div>
+          <div class="l-actor" style="top:626px;">sedatednerves</div>
 
-          <div class="l-role" style="top:651px;">CHRISTOPHER WRIGHT</div>
-          <div class="l-actor" style="top:666px;">Halyze</div>
+          <div class="l-role" style="top:663px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:678px;">Halyze</div>
 
-          <div class="l-role" style="top:703px;">JENNY</div>
-          <div class="l-actor" style="top:718px;">Kiti Celine</div>
+          <div class="l-role" style="top:715px;">JENNY</div>
+          <div class="l-actor" style="top:730px;">Kiti Celine</div>
 
-          <div class="l-role" style="top:755px;">ZOMAK THE DESTROYER · OLD JOE</div>
-          <div class="l-actor" style="top:770px;">Lewis Saunders</div>
+          <div class="l-role" style="top:767px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:782px;">Lewis Saunders</div>
 
-          <div class="l-role" style="top:807px;">BROTHER PAUL</div>
-          <div class="l-actor" style="top:822px;">Matt Bartlett</div>
+          <div class="l-role" style="top:819px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:834px;">Matt Bartlett</div>
 
-          <div class="l-role" style="top:859px;">BIG JESUS MORDINO · VORTIS</div>
-          <div class="l-actor" style="top:874px;">Enrico Leone</div>
+          <div class="l-role" style="top:871px;">BIG JESUS MORDINO · VORTIS</div>
+          <div class="l-role" style="top:883px;">HAPPY HARRY</div>
+          <div class="l-actor" style="top:898px;">Enrico Leone</div>
 
-          <div class="l-role" style="top:911px;">TORR BUCKNER · FRANCIS</div>
-          <div class="l-actor" style="top:926px;">David Pastore-Theriaque</div>
+          <div class="l-role" style="top:935px;">TORR BUCKNER · FRANCIS · DON</div>
+          <div class="l-actor" style="top:950px;">David Pastore-Theriaque</div>
 
-          <div class="l-role" style="top:963px;">LOUISE</div>
-          <div class="l-actor" style="top:978px;">Billy Graves</div>
+          <div class="l-role" style="top:987px;">LOUISE</div>
+          <div class="l-actor" style="top:1002px;">Billy Graves</div>
 
-          <div class="l-role" style="top:1015px;">CHAD</div>
-          <div class="l-actor" style="top:1030px;">Sn8kezz</div>
+          <div class="l-role" style="top:1039px;">CHAD · MERK</div>
+          <div class="l-actor" style="top:1054px;">Sn8kezz</div>
 
-          <div class="l-role" style="top:1067px;">KROM</div>
-          <div class="l-actor" style="top:1082px;">Jeremy Lindsay</div>
+          <div class="l-role" style="top:1091px;">KROM · MAYOR ASCORTI</div>
+          <div class="l-actor" style="top:1106px;">Jeremy Lindsay</div>
 
-          <div class="l-role" style="top:1119px;">LYDIA</div>
-          <div class="l-actor" style="top:1134px;">Juliet Blank</div>
+          <div class="l-role" style="top:1143px;">LYDIA · ARDIN BUCKNER</div>
+          <div class="l-actor" style="top:1158px;">Juliet Blank</div>
 
-          <div class="l-role" style="top:1171px;">CHRISSY</div>
-          <div class="l-actor" style="top:1186px;">Megan Rowe</div>
+          <div class="l-role" style="top:1195px;">CHRISSY</div>
+          <div class="l-actor" style="top:1210px;">Megan Rowe</div>
 
-          <div class="l-role" style="top:1223px;">ARTHUR PENDRAGON</div>
-          <div class="l-actor" style="top:1238px;">Tsovir</div>
+          <div class="l-role" style="top:1247px;">ARTHUR PENDRAGON</div>
+          <div class="l-actor" style="top:1262px;">Tsovir</div>
 
-          <div class="l-role" style="top:1275px;">HANK</div>
-          <div class="l-actor" style="top:1290px;">PaleFreak</div>
+          <div class="l-role" style="top:1299px;">HANK</div>
+          <div class="l-actor" style="top:1314px;">PaleFreak</div>
 
-          <div class="l-role" style="top:1327px;">ANN</div>
-          <div class="l-actor" style="top:1342px;">Jessica Baxter</div>
+          <div class="l-role" style="top:1351px;">ANN</div>
+          <div class="l-actor" style="top:1366px;">Jessica Baxter</div>
 
-          <div class="l-role" style="top:1379px;">TUBBY · DARION</div>
-          <div class="l-actor" style="top:1394px;">Dmitry Medvedenko</div>
+          <div class="l-role" style="top:1403px;">TUBBY · DARION</div>
+          <div class="l-actor" style="top:1418px;">Dmitry Medvedenko</div>
 
-          <div class="l-role" style="top:1431px;">PAINLESS DOC JOHNSON</div>
-          <div class="l-actor" style="top:1446px;">Mike Harrison-Wood</div>
+          <div class="l-role" style="top:1455px;">PAINLESS DOC JOHNSON</div>
+          <div class="l-actor" style="top:1470px;">Mike Harrison-Wood</div>
 
-          <div class="l-role" style="top:1483px;">DOCTOR ANDREW</div>
-          <div class="l-actor" style="top:1498px;">Charles W. Morton</div>
+          <div class="l-role" style="top:1507px;">DOCTOR ANDREW</div>
+          <div class="l-actor" style="top:1522px;">Charles W. Morton</div>
 
-          <div class="l-role" style="top:1535px;">FANNIE MAE</div>
-          <div class="l-actor" style="top:1550px;">Rin Moore</div>
+          <div class="l-role" style="top:1559px;">FANNIE MAE</div>
+          <div class="l-actor" style="top:1574px;">Rin Moore</div>
 
-          <div class="l-role" style="top:1587px;">PETERSON</div>
-          <div class="l-actor" style="top:1602px;">Darrell Haley</div>
+          <div class="l-role" style="top:1611px;">PETERSON · PRIVATE DOBBS</div>
+          <div class="l-actor" style="top:1626px;">Darrell Haley</div>
 
-          <div class="l-role" style="top:1639px;">JOSEPH</div>
-          <div class="l-actor" style="top:1654px;">AnInsaneProfessional</div>
+          <div class="l-role" style="top:1663px;">JOSEPH</div>
+          <div class="l-actor" style="top:1678px;">AnInsaneProfessional</div>
 
-          <div class="l-role" style="top:1691px;">FLICK</div>
-          <div class="l-actor" style="top:1706px;">Lapo Riccardi</div>
+          <div class="l-role" style="top:1715px;">FLICK</div>
+          <div class="l-actor" style="top:1730px;">Lapo Riccardi</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1778px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1800px;">LebronJane</div>
+          <div class="l-thanks" style="top:1802px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1824px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1873px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1895px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1897px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1919px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1970px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1992px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2014px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2036px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1994px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2016px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2038px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2060px;">The Fallout 2 Community</div>
         </div>
 
         <div class="crawl-block">
@@ -435,7 +437,7 @@
 
           <div class="l-voiceactors">VOICE ACTORS</div>
 
-          <div class="l-role" style="top:339px;">SKEETER · VEGEIR</div>
+          <div class="l-role" style="top:339px;">SKEETER · VEGEIR · SERGEANT GRANITE</div>
           <div class="l-actor" style="top:354px;">Joshua Luther</div>
 
           <div class="l-role" style="top:391px;">KEITH WRIGHT</div>
@@ -445,90 +447,92 @@
           <div class="l-actor" style="top:458px;">KALLEKANNIBAL</div>
 
           <div class="l-role" style="top:495px;">KAGA · CHUCK &amp; BUCK DUNTON</div>
-          <div class="l-actor" style="top:510px;">Richard Manzano - Sp3lunky</div>
+          <div class="l-role" style="top:507px;">SHERIFF DUMONT</div>
+          <div class="l-actor" style="top:522px;">Richard Manzano - Sp3lunky</div>
 
-          <div class="l-role" style="top:547px;">METZGER</div>
-          <div class="l-actor" style="top:562px;">Bailey Geen - stab0talksVA</div>
+          <div class="l-role" style="top:559px;">METZGER</div>
+          <div class="l-actor" style="top:574px;">Bailey Geen - stab0talksVA</div>
 
-          <div class="l-role" style="top:599px;">ZAIUS</div>
-          <div class="l-actor" style="top:614px;">sedatednerves</div>
+          <div class="l-role" style="top:611px;">ZAIUS</div>
+          <div class="l-actor" style="top:626px;">sedatednerves</div>
 
-          <div class="l-role" style="top:651px;">CHRISTOPHER WRIGHT</div>
-          <div class="l-actor" style="top:666px;">Halyze</div>
+          <div class="l-role" style="top:663px;">CHRISTOPHER WRIGHT</div>
+          <div class="l-actor" style="top:678px;">Halyze</div>
 
-          <div class="l-role" style="top:703px;">JENNY</div>
-          <div class="l-actor" style="top:718px;">Kiti Celine</div>
+          <div class="l-role" style="top:715px;">JENNY</div>
+          <div class="l-actor" style="top:730px;">Kiti Celine</div>
 
-          <div class="l-role" style="top:755px;">ZOMAK THE DESTROYER · OLD JOE</div>
-          <div class="l-actor" style="top:770px;">Lewis Saunders</div>
+          <div class="l-role" style="top:767px;">ZOMAK THE DESTROYER · OLD JOE</div>
+          <div class="l-actor" style="top:782px;">Lewis Saunders</div>
 
-          <div class="l-role" style="top:807px;">BROTHER PAUL</div>
-          <div class="l-actor" style="top:822px;">Matt Bartlett</div>
+          <div class="l-role" style="top:819px;">BROTHER PAUL</div>
+          <div class="l-actor" style="top:834px;">Matt Bartlett</div>
 
-          <div class="l-role" style="top:859px;">BIG JESUS MORDINO · VORTIS</div>
-          <div class="l-actor" style="top:874px;">Enrico Leone</div>
+          <div class="l-role" style="top:871px;">BIG JESUS MORDINO · VORTIS</div>
+          <div class="l-role" style="top:883px;">HAPPY HARRY</div>
+          <div class="l-actor" style="top:898px;">Enrico Leone</div>
 
-          <div class="l-role" style="top:911px;">TORR BUCKNER · FRANCIS</div>
-          <div class="l-actor" style="top:926px;">David Pastore-Theriaque</div>
+          <div class="l-role" style="top:935px;">TORR BUCKNER · FRANCIS · DON</div>
+          <div class="l-actor" style="top:950px;">David Pastore-Theriaque</div>
 
-          <div class="l-role" style="top:963px;">LOUISE</div>
-          <div class="l-actor" style="top:978px;">Billy Graves</div>
+          <div class="l-role" style="top:987px;">LOUISE</div>
+          <div class="l-actor" style="top:1002px;">Billy Graves</div>
 
-          <div class="l-role" style="top:1015px;">CHAD</div>
-          <div class="l-actor" style="top:1030px;">Sn8kezz</div>
+          <div class="l-role" style="top:1039px;">CHAD · MERK</div>
+          <div class="l-actor" style="top:1054px;">Sn8kezz</div>
 
-          <div class="l-role" style="top:1067px;">KROM</div>
-          <div class="l-actor" style="top:1082px;">Jeremy Lindsay</div>
+          <div class="l-role" style="top:1091px;">KROM · MAYOR ASCORTI</div>
+          <div class="l-actor" style="top:1106px;">Jeremy Lindsay</div>
 
-          <div class="l-role" style="top:1119px;">LYDIA</div>
-          <div class="l-actor" style="top:1134px;">Juliet Blank</div>
+          <div class="l-role" style="top:1143px;">LYDIA · ARDIN BUCKNER</div>
+          <div class="l-actor" style="top:1158px;">Juliet Blank</div>
 
-          <div class="l-role" style="top:1171px;">CHRISSY</div>
-          <div class="l-actor" style="top:1186px;">Megan Rowe</div>
+          <div class="l-role" style="top:1195px;">CHRISSY</div>
+          <div class="l-actor" style="top:1210px;">Megan Rowe</div>
 
-          <div class="l-role" style="top:1223px;">ARTHUR PENDRAGON</div>
-          <div class="l-actor" style="top:1238px;">Tsovir</div>
+          <div class="l-role" style="top:1247px;">ARTHUR PENDRAGON</div>
+          <div class="l-actor" style="top:1262px;">Tsovir</div>
 
-          <div class="l-role" style="top:1275px;">HANK</div>
-          <div class="l-actor" style="top:1290px;">PaleFreak</div>
+          <div class="l-role" style="top:1299px;">HANK</div>
+          <div class="l-actor" style="top:1314px;">PaleFreak</div>
 
-          <div class="l-role" style="top:1327px;">ANN</div>
-          <div class="l-actor" style="top:1342px;">Jessica Baxter</div>
+          <div class="l-role" style="top:1351px;">ANN</div>
+          <div class="l-actor" style="top:1366px;">Jessica Baxter</div>
 
-          <div class="l-role" style="top:1379px;">TUBBY · DARION</div>
-          <div class="l-actor" style="top:1394px;">Dmitry Medvedenko</div>
+          <div class="l-role" style="top:1403px;">TUBBY · DARION</div>
+          <div class="l-actor" style="top:1418px;">Dmitry Medvedenko</div>
 
-          <div class="l-role" style="top:1431px;">PAINLESS DOC JOHNSON</div>
-          <div class="l-actor" style="top:1446px;">Mike Harrison-Wood</div>
+          <div class="l-role" style="top:1455px;">PAINLESS DOC JOHNSON</div>
+          <div class="l-actor" style="top:1470px;">Mike Harrison-Wood</div>
 
-          <div class="l-role" style="top:1483px;">DOCTOR ANDREW</div>
-          <div class="l-actor" style="top:1498px;">Charles W. Morton</div>
+          <div class="l-role" style="top:1507px;">DOCTOR ANDREW</div>
+          <div class="l-actor" style="top:1522px;">Charles W. Morton</div>
 
-          <div class="l-role" style="top:1535px;">FANNIE MAE</div>
-          <div class="l-actor" style="top:1550px;">Rin Moore</div>
+          <div class="l-role" style="top:1559px;">FANNIE MAE</div>
+          <div class="l-actor" style="top:1574px;">Rin Moore</div>
 
-          <div class="l-role" style="top:1587px;">PETERSON</div>
-          <div class="l-actor" style="top:1602px;">Darrell Haley</div>
+          <div class="l-role" style="top:1611px;">PETERSON · PRIVATE DOBBS</div>
+          <div class="l-actor" style="top:1626px;">Darrell Haley</div>
 
-          <div class="l-role" style="top:1639px;">JOSEPH</div>
-          <div class="l-actor" style="top:1654px;">AnInsaneProfessional</div>
+          <div class="l-role" style="top:1663px;">JOSEPH</div>
+          <div class="l-actor" style="top:1678px;">AnInsaneProfessional</div>
 
-          <div class="l-role" style="top:1691px;">FLICK</div>
-          <div class="l-actor" style="top:1706px;">Lapo Riccardi</div>
+          <div class="l-role" style="top:1715px;">FLICK</div>
+          <div class="l-actor" style="top:1730px;">Lapo Riccardi</div>
 
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1778px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1800px;">LebronJane</div>
+          <div class="l-thanks" style="top:1802px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1824px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1873px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1895px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1897px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1919px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1970px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:1992px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2014px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2036px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:1994px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2016px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2038px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2060px;">The Fallout 2 Community</div>
         </div>
       </div>
      </div>
