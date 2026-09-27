@@ -165,20 +165,20 @@
     color:var(--green);
     text-shadow:0 0 3px rgba(60,248,0,0.45);
     font-family:'Fallout';
-    animation:crawl 70.3s linear infinite;
+    animation:crawl 71.8s linear infinite;
   }
   .crawl-block{ position:relative; }
   /* Loop math: the two numbers below (block spacing and the keyframe's "to"
      translateY) must always be equal in magnitude -- that's what makes the
      two duplicated .crawl-block copies line up seamlessly. That shared
      value must also exceed the actual content height (last item's bottom
-     edge, currently ~2080px) by a healthy margin (~40px+), or the last
+     edge, currently ~2132px) by a healthy margin (~40px+), or the last
      line snaps back before it finishes scrolling past the top of the CRT
      screen -- it "vanishes" mid-scroll right as the next block's logo
      enters. When adding/removing credits lines, recompute both numbers
      from the new content height, and keep the animation-duration in sync
      so scroll speed stays constant (speed = spacing / duration). */
-  .crawl-block + .crawl-block{ position:absolute; top:2486px; left:0; width:100%; }
+  .crawl-block + .crawl-block{ position:absolute; top:2538px; left:0; width:100%; }
   .crawl-track div{
     position:absolute;
     left:0;
@@ -186,7 +186,7 @@
   }
   @keyframes crawl{
     from{ transform:translateY(470px); }
-    to{ transform:translateY(-2016px); }
+    to{ transform:translateY(-2068px); }
   }
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
@@ -206,10 +206,10 @@
   .l-voiceactors{ top:304px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
   .l-actor{ font-size:14px; opacity:0.95; }
-  .l-special{ top:1964px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-special{ top:2016px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
-  .l-qa{ top:1774px; font-size:11px; letter-spacing:3px; opacity:0.7; }
-  .l-art{ top:1869px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-qa{ top:1826px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-art{ top:1921px; font-size:11px; letter-spacing:3px; opacity:0.7; }
 
   /* Date/time readout, positioned using the original Pip-Boy engine's
      digit-slot coordinates so it lines up with the device's LCD strip. */
@@ -411,19 +411,22 @@
           <div class="l-role" style="top:1715px;">FLICK</div>
           <div class="l-actor" style="top:1730px;">Lapo Riccardi</div>
 
+          <div class="l-role" style="top:1767px;">REBECCA DYER</div>
+          <div class="l-actor" style="top:1782px;">Piper Ruhmkorff</div>
+
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1802px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1824px;">LebronJane</div>
+          <div class="l-thanks" style="top:1854px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1876px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1897px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1919px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1949px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1971px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1994px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:2016px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2038px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2060px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:2046px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2068px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2090px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2112px;">The Fallout 2 Community</div>
         </div>
 
         <div class="crawl-block">
@@ -520,19 +523,22 @@
           <div class="l-role" style="top:1715px;">FLICK</div>
           <div class="l-actor" style="top:1730px;">Lapo Riccardi</div>
 
+          <div class="l-role" style="top:1767px;">REBECCA DYER</div>
+          <div class="l-actor" style="top:1782px;">Piper Ruhmkorff</div>
+
           <div class="l-qa">QUALITY ASSURANCE</div>
-          <div class="l-thanks" style="top:1802px;">C. Jared Castor</div>
-          <div class="l-thanks" style="top:1824px;">LebronJane</div>
+          <div class="l-thanks" style="top:1854px;">C. Jared Castor</div>
+          <div class="l-thanks" style="top:1876px;">LebronJane</div>
 
           <div class="l-art">ART</div>
-          <div class="l-thanks" style="top:1897px;">Milky Shakester - Fallout Font</div>
-          <div class="l-thanks" style="top:1919px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:1949px;">Milky Shakester - Fallout Font</div>
+          <div class="l-thanks" style="top:1971px;">Jaqinta - Fallout 2 Font Editor</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:1994px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:2016px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2038px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2060px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:2046px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2068px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2090px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2112px;">The Fallout 2 Community</div>
         </div>
       </div>
      </div>
