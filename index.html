@@ -165,20 +165,20 @@
     color:var(--green);
     text-shadow:0 0 3px rgba(60,248,0,0.45);
     font-family:'Fallout';
-    animation:crawl 79.8s linear infinite;
+    animation:crawl 80.4s linear infinite;
   }
   .crawl-block{ position:relative; }
   /* Loop math: the two numbers below (block spacing and the keyframe's "to"
      translateY) must always be equal in magnitude -- that's what makes the
      two duplicated .crawl-block copies line up seamlessly. That shared
      value must also exceed the actual content height (last item's bottom
-     edge, currently ~2413px) by a healthy margin (~40px+), or the last
+     edge, currently ~2435px) by a healthy margin (~40px+), or the last
      line snaps back before it finishes scrolling past the top of the CRT
      screen -- it "vanishes" mid-scroll right as the next block's logo
      enters. When adding/removing credits lines, recompute both numbers
      from the new content height, and keep the animation-duration in sync
      so scroll speed stays constant (speed = spacing / duration). */
-  .crawl-block + .crawl-block{ position:absolute; top:2819px; left:0; width:100%; }
+  .crawl-block + .crawl-block{ position:absolute; top:2841px; left:0; width:100%; }
   .crawl-track div{
     position:absolute;
     left:0;
@@ -186,7 +186,7 @@
   }
   @keyframes crawl{
     from{ transform:translateY(470px); }
-    to{ transform:translateY(-2349px); }
+    to{ transform:translateY(-2371px); }
   }
 
   .glow{ text-shadow:0 0 6px var(--green), 0 0 16px rgba(60,248,0,0.6); }
@@ -206,7 +206,7 @@
   .l-voiceactors{ top:304px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-role{ font-size:10px; letter-spacing:1.5px; opacity:0.6; }
   .l-actor{ font-size:14px; opacity:0.95; }
-  .l-special{ top:2297px; font-size:11px; letter-spacing:3px; opacity:0.7; }
+  .l-special{ top:2319px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-thanks{ font-size:14px; opacity:0.95; }
   .l-qa{ top:2034px; font-size:11px; letter-spacing:3px; opacity:0.7; }
   .l-writing{ top:2129px; font-size:11px; letter-spacing:3px; opacity:0.7; }
@@ -437,12 +437,13 @@
           <div class="l-art">ART</div>
           <div class="l-thanks" style="top:2230px;">Milky Shakester - Fallout Font</div>
           <div class="l-thanks" style="top:2252px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:2274px;">medicaledical - Sacred Head 3D Model</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:2327px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:2349px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2371px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2393px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:2349px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2371px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2393px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2415px;">The Fallout 2 Community</div>
         </div>
 
         <div class="crawl-block">
@@ -564,12 +565,13 @@
           <div class="l-art">ART</div>
           <div class="l-thanks" style="top:2230px;">Milky Shakester - Fallout Font</div>
           <div class="l-thanks" style="top:2252px;">Jaqinta - Fallout 2 Font Editor</div>
+          <div class="l-thanks" style="top:2274px;">medicaledical - Sacred Head 3D Model</div>
 
           <div class="l-special">SPECIAL THANKS</div>
-          <div class="l-thanks" style="top:2327px;">Goat_Boy - Talking Heads Mod</div>
-          <div class="l-thanks" style="top:2349px;">Black_Electric - THAT Mod</div>
-          <div class="l-thanks" style="top:2371px;">No Mutants Allowed Forum</div>
-          <div class="l-thanks" style="top:2393px;">The Fallout 2 Community</div>
+          <div class="l-thanks" style="top:2349px;">Goat_Boy - Talking Heads Mod</div>
+          <div class="l-thanks" style="top:2371px;">Black_Electric - THAT Mod</div>
+          <div class="l-thanks" style="top:2393px;">No Mutants Allowed Forum</div>
+          <div class="l-thanks" style="top:2415px;">The Fallout 2 Community</div>
         </div>
       </div>
      </div>
